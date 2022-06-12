@@ -12,6 +12,7 @@
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn">MASUK</button>
                 </div>
+                <!--
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
                     <label class="form-check-label text-muted">
@@ -19,8 +20,8 @@
                         Biarkan saya tetap masuk
                     </label>
                   </div>
-                  <!--<a href="#" class="auth-link text-black">Lupa Password?</a>-->
-                </div>
+                  <a href="#" class="auth-link text-black">Lupa Password?</a>
+                </div> -->
                 <div class="text-center mt-4 font-weight-light">
                   Belum punya Akun? <a href="<?= base_url('register') ?>" class="text-success">Daftar</a>
                 </div>

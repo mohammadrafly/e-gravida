@@ -10,7 +10,6 @@ class Auth extends BaseController
 {
     public function login()
     {
-        $model = new User();
         if (!$this->validate([
             'username' => [
                 'rules' => 'required|min_length[4]|max_length[15]',
@@ -31,11 +30,12 @@ class Auth extends BaseController
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
+        $model = new User();
         $data = $model->where('username', $username)->first();
         $kehamilan = new Kehamilan();
         if ($data) {
             $pass = $data['password'];
-            $konfirmasiPassword = password_verify($password, $pass);
+            $konfirmasiPassword = password_verify($password, $data['password']);
             if ($konfirmasiPassword) {
                 $setData = [
                     'id'        => $data['id'],

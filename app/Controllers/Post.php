@@ -74,6 +74,7 @@ class Post extends BaseController
                 'content' => $this->request->getVar('content'),
                 'author' => $this->request->getVar('author'),
                 'category' => $this->request->getVar('category'),
+                'status' => $this->request->getVar('status'),
                 'picture' => $randName,
             ];
             $model->insert($data);
@@ -86,6 +87,7 @@ class Post extends BaseController
                 'content' => $this->request->getVar('content'),
                 'author' => $this->request->getVar('author'),
                 'category' => $this->request->getVar('category'),
+                'status' => $this->request->getVar('status'),
             ];
             $model->insert($data);
             session()->setFlashData('success','Berhasil upload post');

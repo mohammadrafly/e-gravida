@@ -58,6 +58,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
+                                                    <select name="status" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                        <option selected>Pilih Status...</option>
+                                                        <option value="draft">DRAFT</option>
+                                                        <option value="publish">PUBLISH</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
                                         </div>
                                     </div>
                                     <div class="form-actions">

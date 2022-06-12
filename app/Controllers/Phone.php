@@ -37,7 +37,7 @@ class Phone extends BaseController
         ];
         if ($model->update($id,$data)) {
             session()->setFlashData('success','Data telah diupdate!');
-        return $this->response->redirect(site_url('dashboard/phone'));
+            return $this->response->redirect(site_url('dashboard/phone'));
         } else {
             'Error';
         }
@@ -83,7 +83,7 @@ class Phone extends BaseController
         $model = new Phones();
         if ($model->where('id', $id)->delete($id)) {
             session()->setFlashData('success','Data telah dihapus!');
-        return $this->response->redirect(site_url('dashboard/phone'));
+            return $this->response->redirect(site_url('dashboard/phone'));
         } else {
             'Error';
         }

@@ -54,6 +54,7 @@ class Posts extends Model
                 ->join('users', 'post.author = users.id', 'left')
                 ->select('post.*, category.title AS cat_name')
                 ->select('post.*, users.name AS username')
+                ->where('status !=', 'draft')
                 ->get();
         return $builder;
     }
@@ -78,6 +79,7 @@ class Posts extends Model
                 ->select('post.*, category.title AS cat_name')
                 ->select('post.*, users.name AS username')
                 ->where('post.category', $id)
+                ->where('status !=', 'draft')
                 ->get();
         return $builder;
     }
