@@ -54,6 +54,8 @@
                                                     <?php endif ?>
                                                 </td>
                                                 <td>
+                                                    <a href="<?= base_url('dashboard/jadwal/detail/'.$row->id) ?>" class="btn btn-primary"><i
+                                                    class="far fa-eye"></i> Detail</a>
                                                     <a href="<?= base_url('dashboard/jadwal/edit/'.$row->id) ?>" class="btn btn-warning"><i
                                                     class="far fa-edit"></i> Edit</a>
                                                     <a href="<?= base_url('dashboard/jadwal/delete/'.$row->id) ?>" class="btn btn-danger"><i

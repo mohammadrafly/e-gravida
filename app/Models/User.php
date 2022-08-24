@@ -60,4 +60,14 @@ class User extends Model
                 ->get();
         return $query;
     }
+
+    public function RangeDate($start, $end)
+    {
+        $query = $this->db->table('users')
+                ->where('created_at BETWEEN "'. date('Y-m-d', strtotime($start)). '" AND "'. date('Y-m-d', strtotime($end)).'"')
+                ->where('role !=', 'admin')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        return $query;
+    }
 }

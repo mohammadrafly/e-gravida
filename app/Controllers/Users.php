@@ -8,6 +8,32 @@ use App\Models\User;
 
 class Users extends BaseController
 {
+    public function exportPdf()
+    {
+        $dompdf = new \Dompdf\Dompdf();
+        $model = new User();
+        $start = $this->request->getVar('tgl_mulai');
+        $end = $this->request->getVar('tgl_akhir');
+        $data = [
+            'loop' => $model->RangeDate($start,$end)->getResult(),
+        ]; 
+        //dd($data);
+        $dompdf->loadHtml(view('user/pdf', $data));
+        $dompdf->setPaper('A4', 'portrait'); 
+        $dompdf->render();
+        $dompdf->stream('Laporan Users'); 
+ 
+        return redirect()->to(base_url('dashboard/user')); 
+    }
+
+    public function selectDate()
+    {
+        $data = [
+            'pages' => 'Export PDF User',
+        ];
+        return view('user/indexPdf', $data);
+    }
+
     public function index()
     {
         $model = new User();

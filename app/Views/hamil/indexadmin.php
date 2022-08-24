@@ -34,7 +34,7 @@
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $row->username; ?></td>
                                 <td><?php echo $row->kandungan; ?></td>
-                                <td><?php echo $row->usia; ?></td>
+                                <td><?php echo $row->usia; ?> Hari</td>
                                 <td><?php echo $row->berat_terbaru; ?></td>
                                 <td><?php echo $row->berat_awal; ?></td>
                                 <td><?php echo $row->hpht; ?></td>
@@ -42,8 +42,8 @@
                                 <td><?php echo $row->tinggi; ?></td>
                                 <td><?php echo $row->kondisi; ?></td>
                                 <td>
-                                                    <a href="<?= base_url('dashboard/kandungan/edit/'.$row->id) ?>" class="btn btn-warning btn-md"><i
-                                                        class="far fa-edit"></i> Edit</a>
+                                    <a href="<?= base_url('dashboard/kandungan/edit/'.$row->id) ?>" class="btn btn-warning"><i
+                                        class="far fa-edit"></i> Edit</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

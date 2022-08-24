@@ -21,6 +21,13 @@
                   <form action="<?= base_url('dashboard/kondisikehamilan/store'); ?>" class="forms-sample" method="post"> 
                   <?= csrf_field(); ?>
                     <input type="hidden" class="form-control" id="exampleInputEmail2" name="user" value="<?= session()->get('id') ?>">
+                    <input name="id" class="form-control" value="<?= $content['id'] ?>" hidden>
+                    <div class="form-group row">
+                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hari Pertama Haid Terakhir (HPHT)</label>
+                      <div class="col-sm-9">
+                        <input name="test" type="date" id="hpht" class="form-control" onchange="myFunction(event)" value="<?php echo $content['hpht'] ?>">
+                      </div>
+                    </div>
                     <div class="form-group row">
                       <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Kehamilan Ke</label>
                       <div class="col-sm-9">
@@ -28,9 +35,9 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Usia Kandungan/Minggu Ke</label>
+                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Usia Kandungan(Minggu)</label>
                       <div class="col-sm-9">
-                        <input name="usia" type="number" class="form-control" id="exampleInputEmail2" value="<?= $content['usia'] ?>" placeholder="Masukkan Usia Kandungan" >
+                        <input name="usia" type="text" class="form-control" id="usiaKandungan"  value="<?= $content['usia'] ?>" placeholder="Usia Kandungan" readonly>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -58,15 +65,15 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hari Pertama Haid Terakhir (HPHT)</label>
+                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Prediksi Kelahiran</label>
                       <div class="col-sm-9">
-                        <input name="hpht" type="date" class="form-control" id="exampleInputEmail2" value="<?= $content['hpht'] ?>" placeholder="Masukkan Hari Pertama Haid Terakhir (HPHT)"  >
+                        <input name="prediksi" type="text" class="form-control" value="<?= $content['prediksi'] ?>" id="hpl" readonly>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Prediksi Kelahiran</label>
+                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tanggal Persalinan</label>
                       <div class="col-sm-9">
-                        <input name="prediksi" type="date" class="form-control" id="exampleInputEmail2" value="<?= $content['prediksi'] ?>" disabled>
+                        <input name="hpht" type="date" class="form-control" value="<?php echo $content['tanggal_persalinan'] ?>" readonly>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>

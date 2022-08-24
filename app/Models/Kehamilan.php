@@ -23,7 +23,12 @@ class Kehamilan extends Model
         'hpht',
         'prediksi',
         'tinggi',
-        'kondisi'
+        'kondisi',
+        'tanggal_persalinan',
+        'kondisi_bayi',
+        'persalinan',
+        'kondisi_ibu',
+        'keterangan',
     ];
 
     // Dates
@@ -69,5 +74,16 @@ class Kehamilan extends Model
                 ->where('kehamilan.id', $id)
                 ->get();
         return $builder;
+    }
+
+    public function RangeDate($start, $end)
+    {
+        $query = $this->db->table('kehamilan')
+                ->join('users', 'kehamilan.user = users.id', 'left')
+                ->where('kehamilan.created_at BETWEEN "'. date('Y-m-d', strtotime($start)). '" AND "'. date('Y-m-d', strtotime($end)).'"')
+                ->where('role !=', 'admin')
+                ->orderBy('kehamilan.created_at', 'DESC')
+                ->get();
+        return $query;
     }
 }

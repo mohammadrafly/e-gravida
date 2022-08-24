@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>KKIH | <?= $pages ?></title>
+  <title>E-GRAVIDA | <?= $pages ?></title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/vendors/feather/feather.css') ?>">
@@ -30,7 +30,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        System KKIH
+        E-GRAVIDA
         <a class="navbar-brand brand-logo mr-5" href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets/images/favicon-bh.png') ?>" class="mr-2" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets/images/favicon-bh.png') ?>" alt="logo"/></a>
       </div>
@@ -119,6 +119,19 @@
               <span class="menu-title">Master Phone/Link</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Laporan</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?= base_url('dashboard/laporan/kandungan') ?>">Kandungan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= base_url('dashboard/laporan/users') ?>">Users</a></li>
+              </ul>
+            </div>
+          </li>
 
           <?php elseif(session()->get('role') === 'customer'): ?>
           <li class="nav-item">
@@ -161,7 +174,7 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Konsultasi Kesehatan Ibu Hamil. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022. E-GRAVIDA. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
         </footer>
@@ -194,12 +207,69 @@
   <script src="cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script src="<?= base_url('assets/js/dashboard.js') ?>"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="<?= base_url('assets/js/Chart.roundedBarCharts.js') ?>"></script>
   <!-- End custom js for this page-->
   <script>
-    $('.datepicker').datepicker();
-  </script>
-  <script>
+    function myFunction(event) {
+      console.log(event.target.value);
+      today = new Date();
+      year = today.getFullYear();
+      var inputVal = document.getElementById("hpht").value;
+      const input = new Date(inputVal);
+      var waktu = year + '-04-01';
+
+      if (inputVal <= waktu) {
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var inputVal = document.getElementById("hpht").value;
+        const input = new Date(inputVal);
+        var tahun = input.getFullYear() + 1;
+        var bulan = input.getMonth() + 9;
+        var hari = input.getDate() + 7;
+        var hpl = tahun + '-' + bulan + '-' + hari;
+        const d1 = new Date(hpl).toLocaleDateString('id-ID', options);
+        document.getElementById("hpl").value = d1;
+        console.log(hpl);
+      } else if (inputVal >= waktu) {
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var inputVal = document.getElementById("hpht").value;
+        const input = new Date(inputVal);
+        var tahun = input.getFullYear() + 1;
+        var bulan = input.getMonth() - 3;
+        var hari = input.getDate() + 7;
+        var hpl = tahun + '-' + bulan + '-' + hari;
+        const d1 = new Date(hpl).toLocaleDateString('id-ID', options);
+        document.getElementById("hpl").value = d1;
+        console.log(hpl);
+      }
+      console.log(hpl);
+      console.log(inputVal > waktu);
+      
+      var date1 = new Date(inputVal);
+      var date2 = new Date();
+      function float2int (value) {
+          return value | 0;
+      }
+      var Difference_In_Time = date2.getTime() - date1.getTime();
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      const d2 = float2int(Difference_In_Days);
+      var weeks = Math.floor(Difference_In_Days / 7);
+      document.getElementById("usiaKandungan").value = weeks;
+      console.log(weeks + ' Minggu');
+    }
+
+    function Ages(event) {
+      console.log(event.target.value);
+      var dob = document.getElementById("ttl").value;
+      const tl = new Date(dob);   
+      var month_diff = Date.now() - tl.getTime();  
+      var age_dt = new Date(month_diff);   
+      var year = age_dt.getUTCFullYear();  
+      var age = Math.abs(year - 1970);  
+      document.getElementById("umur").value = age;
+      console.log(age);
+    }
+
     setInterval(function() {
 
     var currentTime = new Date();
@@ -211,7 +281,6 @@
     hours = (hours < 10 ? "0" : "") + hours;
     minutes = (minutes < 10 ? "0" : "") + minutes;
     seconds = (seconds < 10 ? "0" : "") + seconds;
-
     // Compose the string for display
     var currentTimeString = hours + ":" + minutes + ":" + seconds;
     $(".clock").html(currentTimeString);
@@ -260,9 +329,41 @@
 
     </script>
     <script>
+    $(function() {
+        $("input[name='phone']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+    $(function() {
+        $("input[name='lila']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+    $(function() {
+        $("input[name='kandungan']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+    $(function() {
+        $("input[name='berat_awal']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+    $(function() {
+        $("input[name='berat_terbaru']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+    $(function() {
+        $("input[name='tinggi']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+    </script>
+    <script>
       $(document).ready( function () {
-    $('#table').DataTable();
-} );
+          $('#table').DataTable();
+      } );
     </script>
 </body>
 

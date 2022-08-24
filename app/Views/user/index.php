@@ -60,7 +60,6 @@
                                   <td><?php echo $row->umur; ?></td>
                                   <td><?php echo $row->created_at; ?></td>
                                   <td>
-                                    <a href="<?= base_url('dashboard/user/edit/'.$row->id) ?>" class="btn btn-warning btn-sm">Edit</a>
                                     <a href="<?= base_url('dashboard/user/delete/'.$row->id) ?>" class="btn btn-danger btn-sm">Delete</a>
                                   </td>
                               </tr>

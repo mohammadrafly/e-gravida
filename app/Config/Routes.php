@@ -57,8 +57,14 @@ $routes->group('dashboard', ['filter' => 'authGuard'], function ($routes) {
     $routes->group('kondisikehamilan', function ($routes) {
         $routes->get('(:num)', 'Hamil::index/$1');
         $routes->post('store', 'Hamil::store');
-    });
+    }); 
     $routes->get('jadwal/(:num)', 'Jadwal::index/$1');
+    $routes->get('jadwal/detail/(:num)', 'Jadwal::detail/$1');
+    $routes->group('laporan', ['filter' => 'authGuardAdmin'], function ($routes) {
+        $routes->get('kandungan', 'Hamil::selectDate');
+        $routes->get('users', 'Users::selectDate');
+        $routes->get('jadwal', 'Schedule::selectDate');
+    });
     //Admin Routes
     $routes->group('post', ['filter' => 'authGuardAdmin'], function ($routes) {
         $routes->get('/', 'Post::index');
@@ -83,6 +89,7 @@ $routes->group('dashboard', ['filter' => 'authGuard'], function ($routes) {
         $routes->post('update', 'Jadwal::update');
         $routes->get('edit/(:num)', 'Jadwal::edit/$1');
         $routes->get('delete/(:num)', 'Jadwal::delete/$1');
+        $routes->get('detail/(:num)', 'Jadwal::detail/$1');
     });
     $routes->group('user', ['filter' => 'authGuardAdmin'], function ($routes) {
         $routes->get('/', 'Users::index');

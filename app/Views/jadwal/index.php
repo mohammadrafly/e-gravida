@@ -16,6 +16,7 @@
                                 <th>Judul</th>
                                 <th>Waktu</th>
                                 <th>Status</th>
+                                <th>Opsi</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -35,6 +36,10 @@
                                                         <!--do something-->
                                                         <label class="badge badge-danger"><?= strtoupper($row->status) ?></label>
                                                     <?php endif ?>  
+                                </td>
+                                <td>
+                                    <a href="<?= base_url('dashboard/jadwal/detail/'.$row->id) ?>" class="btn btn-primary"><i
+                                                    class="far fa-eye"></i> Detail</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

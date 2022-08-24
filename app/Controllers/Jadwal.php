@@ -19,6 +19,7 @@ class Jadwal extends BaseController
             'content' => $model->getJadwalByID($id)->getResult(),
             'pages' => 'Jadwal'
         ];
+        //dd($data);
         return view('jadwal/index', $data);
     }
 
@@ -49,7 +50,7 @@ class Jadwal extends BaseController
             'title' => $this->request->getVar('title'),
             'date' => $this->request->getVar('date'),
             'user' => $this->request->getVar('user'),
-            'status' => 'UNDONE'
+            'status' => 'UNDONE',
         ];
         $model->insert($data);
         session()->setFlashData('success','Berhasil upload jadwal');
@@ -82,9 +83,31 @@ class Jadwal extends BaseController
             'title' => $this->request->getVar('title'),
             'status' => $this->request->getVar('status'),
             'date' => $this->request->getVar('date'),
+            'lila' => $this->request->getVar('lila'),
+            'pmt_pemulihan' => $this->request->getVar('pmt_pemulihan'),
+            'tambah_darah' => $this->request->getVar('tambah_darah'),
+            'imunisasi_tt' => $this->request->getVar('imunisasi_tt'),
+            'kapsul_yodium' => $this->request->getVar('kapsul_yodium'),
+            'hasil_penimbangan' => $this->request->getVar('hasil_penimbangan'),
+            'resiko' => $this->request->getVar('resiko'),
+            'hasil_pemeriksaan' => $this->request->getVar('hasil_pemeriksaan'),
         ];
         $model->update($id,$data);
         session()->setFlashData('success','Berhasil update jadwal');
         return redirect()->to('dashboard/jadwal');  
+    }
+
+    public function detail($id)
+    {
+        $model = new Schedule();
+        $phones = new Phones();
+        $data = [
+            'phone_private' => $phones->where('kategori', 'PRIVATE')->first(),
+            'phone_group' => $phones->where('kategori', 'GROUP')->first(),
+            'content' => $model->where('id', $id)->first(),
+            'pages' => 'Detail Pemeriksaan',
+        ];
+        //dd($data);
+        return view('jadwal/detail', $data);
     }
 }

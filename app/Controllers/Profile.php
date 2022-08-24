@@ -92,8 +92,6 @@ class Profile extends BaseController
         $randName = $img->getRandomName();
         $tanggallahir = $this->request->getVar('tanggallahir');
 
-        $time = Time::parse($tanggallahir);
-        $umur = $time->getAge();
         $today = Time::now('Asia/Jakarta')->toDateTime();
 
         //dd($today);
@@ -111,7 +109,7 @@ class Profile extends BaseController
                 'suami' => $this->request->getVar('suami'),
                 'tempatlahir' => $this->request->getVar('tempatlahir'),
                 'tanggallahir' => $tanggallahir,
-                'umur' => $umur,
+                'umur' => $this->request->getVar('umur'),
                 'alamat' => $this->request->getVar('alamat'),
                 'profile' => $randName,
                 'updated_at' => $today,
@@ -130,7 +128,7 @@ class Profile extends BaseController
                 'suami' => $this->request->getVar('suami'),
                 'tempatlahir' => $this->request->getVar('tempatlahir'),
                 'tanggallahir' => $this->request->getVar('tanggallahir'),
-                'umur' => $umur,
+                'umur' => $this->request->getVar('umur'),
                 'alamat' => $this->request->getVar('alamat'),
                 'updated_at' => $today,
             ];

@@ -29,12 +29,29 @@
                       <div class="ml-2">
                         <h4 class="location font-weight-normal"><?php echo date("l d M Y") ;?></h4>
                         <br>
-                        <h6 class="font-weight-normal clock"></h6>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <?php if(session()->get('role') === 'customer'): ?>
+                <?php if($hamil['tanggal_persalinan']): ?>
+                <div class="col-md-6 grid-margin transparent">
+                  <div class="row">
+                    <div class="col-md-12 mb-4 stretch-card transparent">
+                      <div class="card card-tale">
+                        <div class="card-body">
+                          <p class="mb-4">Selamat anda telah melahirkan pada:</p>
+                          <p class="fs-30 mb-2"><?= $hamil['tanggal_persalinan'] ?></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php elseif($hamil['tanggal_persalinan'] === NULL): ?>
+                <?php endif ?>
+              <?php elseif(session()->get('role') === 'admin'): ?>
+              <?php endif ?>
             </div>
           </div>
         </div>

@@ -71,13 +71,13 @@
                     <div class="form-group row">
                       <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tanggal Lahir</label>
                       <div class="col-sm-9">
-                        <input name="tanggallahir" type="date" class="form-control" id="exampleInputEmail2" value="<?= $content['tanggallahir'] ?>" placeholder="dd / mm / yyyy | [19/07/1996]">
+                        <input name="tanggallahir" type="date" class="form-control" id="ttl" onchange="Ages(event)" value="<?= $content['tanggallahir'] ?>">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Umur</label>
                       <div class="col-sm-9">
-                        <input name="umur" type="number" class="form-control" id="exampleInputEmail2" value="<?= $content['umur'] ?>" placeholder="Masukkan Umur" disabled>
+                        <input name="umur" type="number" class="form-control" id="umur" value="<?= $content['umur'] ?>" placeholder="Masukkan Umur" readonly>
                       </div>
                     </div>
                     <div class="form-group row">

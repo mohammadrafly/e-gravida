@@ -18,7 +18,15 @@ class Schedule extends Model
         'title',
         'date',
         'user',
-        'status'
+        'status',
+        'lila',
+        'pmt_pemulihan',
+        'tambah_darah',
+        'imunisasi_tt',
+        'kapsul_yodium',
+        'hasil_penimbangan',
+        'resiko',
+        'hasil_pemeriksaan'
     ];
 
     // Dates
@@ -49,6 +57,7 @@ class Schedule extends Model
     {
         $query = $this->db->table('jadwal')
             ->join('users', 'users.id = jadwal.user', 'left')
+            ->select('jadwal.*, users.id AS id_user')
             ->where('jadwal.user', $id)
             ->get();
         return $query;

@@ -31,7 +31,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Judul</label>
+                                                    <label>Tanggal</label>
                                                     <input type="date" name="date" class="form-control" placeholder="Judul" value="<?= $content['date'] ?>">
                                                 </div>
                                             </div>
@@ -45,6 +45,69 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <?php if($content['status'] === 'done'): ?>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Lila (Lingkar Lengan Atas)</label>
+                                                    <input type="number" name="lila" class="form-control" placeholder="Lingkar Lengan Atas" value="<?= $content['lila'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>PMT Pemulihan</label>
+                                                    <input type="text" name="pmt_pemulihan" class="form-control" placeholder="PMT Pemulihan" value="<?= $content['pmt_pemulihan'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Tambah Darah</label>
+                                                    <select name="tambah_darah" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                        <option selected value="<?= $content['tambah_darah'] ?>"><?= $content['tambah_darah'] ?></option>
+                                                        <option value="undone">UNDONE</option>
+                                                        <option value="done">DONE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Imunisasi TT</label>
+                                                    <select name="imunisasi_tt" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                        <option selected value="<?= $content['imunisasi_tt'] ?>"><?= $content['imunisasi_tt'] ?></option>
+                                                        <option value="undone">UNDONE</option>
+                                                        <option value="done">DONE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Kapsul Yodium</label>
+                                                    <select name="kapsul_yodium" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                        <option selected value="<?= $content['kapsul_yodium'] ?>"><?= $content['kapsul_yodium'] ?></option>
+                                                        <option value="undone">UNDONE</option>
+                                                        <option value="done">DONE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Hasil Penimbangan</label>
+                                                    <input type="text" name="hasil_penimbangan" class="form-control" placeholder="Hasil Penimbangan" value="<?= $content['hasil_penimbangan'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Resiko</label>
+                                                    <input type="text" name="resiko" class="form-control" placeholder="Resiko.." value="<?= $content['resiko'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Hasil Pemeriksaan</label>
+                                                    <input type="text" name="hasil_pemeriksaan" class="form-control" placeholder="Hasil Pemerikasaan" value="<?= $content['hasil_pemeriksaan'] ?>">
+                                                </div>
+                                            </div>
+                                            <?php elseif($content['status'] === 'undone'): ?>
+                                            <?php endif ?>
                                         </div>
                                     </div>
                                     <div class="form-actions">
